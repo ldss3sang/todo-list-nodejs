@@ -1,0 +1,27 @@
+{
+  "name": "todo-list-be",
+  "version": "1.0.0",
+  "description": "Build todo list app using nodejs, mongodb, and express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldss3sang/todo-list-be.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ldss3sang/todo-list-be/issues"
+  },
+  "homepage": "https://github.com/ldss3sang/todo-list-be#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3"
+  }
+}
