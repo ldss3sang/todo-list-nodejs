@@ -6,6 +6,10 @@ router.post("/", taskController.createTask);
 
 router.get("/", taskController.getTask);
 
+router.get("/:id([0-9a-f]{24})", taskController.getTaskById);
+
+router.get("/search", taskController.search);
+
 router.put("/:id", taskController.updateTask);
 
 router.delete("/:id", taskController.deleteTask);

@@ -57,4 +57,35 @@ taskController.deleteTask = async (req, res) => {
   }
 };
 
+taskController.getTaskById = async (req, res) => {
+    try {
+        const {
+            params: { id }
+        } = req;
+        const task = await Task.findOne({ _id: id });
+        if (!task) {
+            throw new Error(`Task id ${id} cannot be found`);
+        }
+        res.status(200).json({ stat: "ok", data: task });
+    } catch (error) {
+        res.status(400).json({ status: "fail", error: error.message });
+    }
+}
+
+taskController.search = async (req, res) => {
+    try {
+        const {
+            query: { term }
+        } = req;
+
+        const tasks = await Task.find({ task: { $regex: term, $options: "i" } });
+        if (!tasks) {
+            throw new Error(`No task found`);
+        }
+        res.status(200).json({ stat: "ok", data: tasks });
+    } catch (error) {
+        res.status(400).json({ status: "fail", error: error.message });
+    }
+}
+
 module.exports = taskController;

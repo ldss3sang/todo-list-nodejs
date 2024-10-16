@@ -2,16 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use("/api", indexRouter);
 
-const mongoURI = "mongodb://localhost:27017/todo-list";
-
+const mongoURI = process.env.MONGODB_URI_PROD;
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, clientOptions)
   .then(() => {
     console.log("mongoose connected");
   })
