@@ -28,4 +28,20 @@ userController.createUser = async (req, res) => {
   }
 };
 
+// userController.login = async (req, res) => {
+//   try {
+//     const {
+//       body: { email, password },
+//     } = req;
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//         throw new Error("No user found");
+//     }
+//     bcrypt.compareSync(password, user.password);
+
+//   } catch (error) {
+//     res.status(400).json({ status: "fail", error: error.message });
+//   }
+// };
+
 module.exports = userController;
